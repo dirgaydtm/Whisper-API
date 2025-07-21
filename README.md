@@ -1,10 +1,10 @@
-# Whisper API
+# Faster Whisper API
 
-API sederhana untuk melakukan transkripsi audio menggunakan OpenAI Whisper dan Flask.
+API sederhana untuk melakukan transkripsi audio menggunakan [Faster Whisper](https://github.com/guillaumekln/faster-whisper) dan Flask.
 
 ## Fitur
 
-- Endpoint `/transcribe` untuk mengunggah file audio (MP3) dan mendapatkan hasil transkripsi.
+- Endpoint `/transcribe` untuk mengunggah file audio (MP3) dan mendapatkan hasil transkripsi beserta deteksi bahasa.
 - Endpoint `/` untuk pengecekan status API.
 
 ## Cara Menjalankan
@@ -14,7 +14,7 @@ API sederhana untuk melakukan transkripsi audio menggunakan OpenAI Whisper dan F
    Pastikan Python dan pip sudah terpasang. Jalankan perintah berikut untuk menginstal dependensi:
 
    ```bash
-   pip install flask openai-whisper
+   pip install -r requirements.txt
    ```
 
 2. **Menjalankan Server**
@@ -37,6 +37,7 @@ API sederhana untuk melakukan transkripsi audio menggunakan OpenAI Whisper dan F
 - **Response:**
   ```json
   {
+    "language": "id",
     "text": "Hasil transkripsi audio"
   }
   ```
@@ -47,11 +48,12 @@ API sederhana untuk melakukan transkripsi audio menggunakan OpenAI Whisper dan F
 - **Response:**
   ```json
   {
-    "message": "Whisper API is running"
+    "message": "Faster Whisper API is running"
   }
   ```
 
 ## Catatan
 
 - File audio yang diunggah akan disimpan sementara dan dihapus setelah proses transkripsi selesai.
-- Model Whisper yang digunakan adalah versi "base".
+- Model Faster Whisper yang digunakan adalah versi "base" dan berjalan di CPU.
+- Untuk model lain, ubah variabel `model_size` di `app.py`.

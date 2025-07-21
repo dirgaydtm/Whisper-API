@@ -1,3 +1,2 @@
 flask
-openai-whisper
-torch
+faster-whisper
